@@ -1,6 +1,7 @@
 import random
 import string
 from words import words
+from the_wee_guy import hanged_man
 
 def get_word(words):
     word = random.choice(words)  # selcting random word from wordlist to match against guesses
@@ -14,12 +15,13 @@ def hangman():
     alphabet = set(string.ascii_lowercase)
     used_letters = set()
 
-    chances = 9
+    chances = 7
 
     while len(word_letters) > 0 and chances > 0:
         print('you have', chances, 'chances left, and so far have guessed: ', ' '.join(used_letters))
 
         word_list = [letter if letter in used_letters else '-' for letter in word]
+        print(hanged_man[chances])
         print('so far you have: ', ' '.join(word_list))
 
         user_letter = input('guess a letter: ').lower() 
@@ -37,7 +39,8 @@ def hangman():
         else:
             print("hey, that's not a letter!")
     if chances == 0:
-        print ('you have run out of chances, you lose! the word was', word, '!')
+        print(hanged_man[chances])
+        print ('oh no, they died! the word was', word, '!')
     else:
         print('you win! the word was', word, '!')
 
