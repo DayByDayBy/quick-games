@@ -1,7 +1,9 @@
 import random
 import string
+import pygame
 from words import words
 from the_wee_guy import hanged_man
+
 
 def get_word(words):
     word = random.choice(words)  # selcting random word from wordlist to match against guesses
