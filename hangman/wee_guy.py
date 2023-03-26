@@ -1,3 +1,8 @@
+# this seems like a more fun way to do thie images, espcially for showing to the kids.
+# plus there is potential to swap out images too, as long as they are named the same
+# then it should allow for kids own art to be used.
+
+
 import pygame
 
 pygame.init()
