@@ -1,14 +1,14 @@
 import random
 import string
-import pygame
+# import pygame              # planning to use pygame, but commented out as it isnt implemented yet
 from words import words
 from the_wee_guy import hanged_man
 
 
 def get_word(words):
-    word = random.choice(words)  # selcting random word from wordlist to match against guesses
-    while '-' in word or ' ' in word:
-        word = random.choice(words)
+    word = random.choice(words)  # selecting random word from wordlist to match against guesses
+    while '-' in word or ' ' in word:  # removing words in list that are hyphenated or contain spaces
+        word = random.choice(words)  # selecting word after removing hyphenated etc words
     return word.lower()
 
 def hangman():
@@ -34,17 +34,17 @@ def hangman():
                 print('')
             else:
                 chances -= 1
-                print('\nyour letter, ', user_letter, 'is not in the word.')
+                print('\nyour letter, ', user_letter, 'is not in the word.\n')
         
         elif user_letter in used_letters:
-            print('oops! You already guessed that one.')
+            print('\noops! You already guessed that one.\n')
         else:
-            print("hey, that's not a letter!")
+            print("\nhey, that's not a letter!\n")
     if chances == 0:
         print(hanged_man[chances])
-        print ('oh no, they died! the word was', word, '!')
+        print ('\noh no, they died! the word was', word, '!\n')
     else:
-        print('you win! the word was', word, '!')
+        print('\nyou win! the word was', word, '!\n')
 
 if __name__ == '__main__':
     hangman()
