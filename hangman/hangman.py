@@ -1,8 +1,10 @@
 import random
 import string
-# import pygame              # planning to use pygame, but commented out as it isnt implemented yet
+import pygame          
 from words import words
-from the_wee_guy import hanged_man
+from weeGuy_ASCII import hanged_man
+
+pygame.init()
 
 
 def get_word(words):
