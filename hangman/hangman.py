@@ -27,7 +27,14 @@ def hangman():
     base = HangedMan(100, 100)
     hanged_man_group.add(base)
 
+    clock = pygame.time.Clock()
+
     while len(word_letters) > 0 and chances > 0:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+
         print('you have', chances, 'chances left, and so far have guessed: ', ' '.join(used_letters))
 
         word_list = [letter if letter in used_letters else '-' for letter in word]
