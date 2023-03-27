@@ -2,7 +2,9 @@ import random
 import string
 import pygame          
 from words import words
-from weeGuy_ASCII import hanged_man
+# from weeGuy_ASCII import hanged_man           - no longer in use 
+from weeGuy import HangedMan, hanged_man_group
+
 
 pygame.init()
 
@@ -19,13 +21,18 @@ def hangman():
     alphabet = set(string.ascii_lowercase)
     used_letters = set()
 
-    chances = 7
+    chances = 9
+
+    hanged_man_group = pygame.sprite.Group()
+    base = HangedMan(100, 100)
+    hanged_man_group.add(base)
 
     while len(word_letters) > 0 and chances > 0:
         print('you have', chances, 'chances left, and so far have guessed: ', ' '.join(used_letters))
 
         word_list = [letter if letter in used_letters else '-' for letter in word]
-        print(hanged_man[chances])
+        # print(hanged_man[chances])
+        base.update(chances)
         print('so far you have: ', ' '.join(word_list))
 
         user_letter = input('guess a letter: ').lower() 
@@ -43,7 +50,7 @@ def hangman():
         else:
             print("\nhey, that's not a letter!\n")
     if chances == 0:
-        print(hanged_man[chances])
+        print(HangedMan[chances])
         print ('\noh no, they died! the word was', word, '!\n')
     else:
         print('\nyou win! the word was', word, '!\n')

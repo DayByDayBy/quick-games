@@ -1,25 +1,28 @@
-# this seems like a more fun way to do thie images, espcially for showing to the kids.
+# this seems like a more fun way to do the images, espcially for showing to the kids.
 # plus there is potential to swap out images too, as long as they are named the same
 # then it should allow for kids own art to be used.
 
 
 import pygame
 
+
 pygame.init()
 
 
-screen = pygame.display.set_mode((640, 480))
+screen = pygame.display.set_mode((640, 480)).convert()
+pygame.display.set_caption('HangMan')
 
-base_image = pygame.image.load('base.PNG')
-upright_image = pygame.image.load('upright.PNG')
-support_image = pygame.image.load('support.PNG')
-crossbeam_image = pygame.image.load('crossbeam.PNG')
-head_image = pygame.image.load('head.PNG')
-body_image = pygame.image.load('body.PNG')
-leftArm_image = pygame.image.load('.PNG')
-rightArm_image = pygame.image.load('rightArm.PNG')
-leftLeg_image = pygame.image.load('leftLeg.PNG')
-rightLeg_image = pygame.image.load('rightLeg.PNG')
+
+base_image = pygame.image.load('images/base.PNG').convert()
+upright_image = pygame.image.load('images/upright.PNG').convert()
+support_image = pygame.image.load('images/support.PNG').convert()
+crossbeam_image = pygame.image.load('images/crossbeam.PNG').convert()
+head_image = pygame.image.load('images/head.PNG').convert()
+body_image = pygame.image.load('images/body.PNG').convert()
+leftArm_image = pygame.image.load('images/leftArm.PNG').convert()
+rightArm_image = pygame.image.load('images/rightArm.PNG').convert()
+leftLeg_image = pygame.image.load('images/leftLeg.PNG').convert()
+rightLeg_image = pygame.image.load('images/rightLeg.PNG').convert()
 
 
 class HangedMan(pygame.sprite.Sprite):
@@ -47,9 +50,10 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-
+            
+            
     # Update the sprite group with the current image
-    current_image = hanged_man[chances]
+    current_image = base_image
     base.update(current_image)
     hanged_man_group.draw(screen)
 
